@@ -1,0 +1,35 @@
+<div id = "container">
+  <!-- populated by JS-->
+</div>
+<script src="./boston.js"></script>
+<script>
+  function renderBoston(boston, container) {
+    var person = boston.data;
+    var len = boston.data.length;
+    var html = '';
+    for (let i = 0; i < len; i++) {
+      html += 
+        '<li class="boston">' +
+        '<h2>' + person[i][8] + '</h2>' +
+        '<h3>' + person[i][11] + '</h3>';
+    }
+    container.innerHTML = '<ul id = "boston">' + html + '</ul>';
+  }
+
+   function renderTopFive(boston, container) {
+    var person = boston.data;
+    var topSalaries = person.sort((a, b) => b[11] - a[11]).slice(0, 5);
+    var len = topSalaries.length
+    var html = '';
+    for(let i = 0; i < len; i++) {
+     html +=
+     '<li class = "top">' +
+     '<h2>' + topSalaries[i][8] + '</h2>' + //dev tools in chrome does not like this line
+     '<h3>' + topSalaries[i][11] + '</h3>';
+  }
+  container.innerHTML = '<ul id + "topSalaries">' + html + '</ul>';
+ }
+
+renderTopFive(boston, document.getElementById('container'));
+//renderBoston(boston, document.getElementById('container'));
+</script>
